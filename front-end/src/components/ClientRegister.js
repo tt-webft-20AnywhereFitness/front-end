@@ -57,7 +57,7 @@ const ClientRegister = (props) => {
                         onChange={handleChange}
                         />
                     </label>
-                    <button>Register</button>                    
+                    <button type="submit">Register</button>                    
                 </form>
             </div>
         </div>
