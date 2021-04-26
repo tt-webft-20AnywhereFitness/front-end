@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
-const Register = (props) => {
+const InstructorRegister = (props) => {
     const [credentials, setCredentials] = useState({
         username:"",
         password:"",
         email:"",
         bio:"",
-        accountType: ['Client', 'Instructor'],
-        certifications: ['Yoga', 'Tae Bo', 'Jazzercise', 'Zumba', 'Pumping Iron'],
+        certifications:"",
     });
     const submitHandler = (e) => {
         e.preventDefault();
@@ -21,7 +20,7 @@ const Register = (props) => {
     return (
         <div className="register">
             <div className="textContainer">
-                <h2 className="registerHeader">Register Today</h2>
+                <h2 className="registerHeader">Instructors Register Today</h2>
                 <form className="registerFrom" onSubmit={submitHandler}>
                     <label>
                         Username:
@@ -60,17 +59,6 @@ const Register = (props) => {
                         />
                     </label>
                     <label>
-                        Account Type:
-                        <select
-                        name='accountType'
-                        value={credentials.accountType}
-                        onChange={handleChange}
-                        >
-                            <option value="Client">Client</option>
-                            <option value="Instructor">Instructor</option>
-                        </select>
-                    </label>
-                    <label>
                         Certifications:
                         <select
                         name='certifications'
@@ -90,4 +78,4 @@ const Register = (props) => {
         </div>
     )
 }
-export default Register
+export default InstructorRegister
