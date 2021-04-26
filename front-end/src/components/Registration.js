@@ -1,4 +1,4 @@
-import axios from 'axios'
+import React, { useState } from 'react'
 
 const Register = (props) => {
     const [credentials, setCredentials] = useState({
@@ -8,7 +8,11 @@ const Register = (props) => {
         bio:"",
         accountType: ['Client', 'Instructor'],
         certifications: ['Yoga', 'Tae Bo', 'Jazzercise', 'Zumba', 'Pumping Iron'],
-    })
+    });
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log('submitted');
+    };
     const handleChange = (e) => 
         setCredentials({
             ...credentials,
@@ -79,7 +83,8 @@ const Register = (props) => {
                             <option value="Zumba">Zumba</option>
                             <option value="Pumping Iron">Pumping Iron</option>
                         </select>
-                    </label>                    
+                    </label>
+                    <button>Register</button>                    
                 </form>
             </div>
         </div>
