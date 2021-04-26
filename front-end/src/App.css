@@ -53,6 +53,7 @@ img {
   font-weight: bold;
   padding: 10px;
   border: none;
+  cursor: pointer;
 }
 
 /* Bottom Styles*/
@@ -63,5 +64,37 @@ img {
 }
 
 .bottom a {
+  color: red;
+}
+
+/* Choice Styles*/
+
+.choicemain {
+  color: white;
+  text-align: center;
+}
+
+.choiceimages {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-family: "Open Sans";
+  color: red;
+  margin-bottom: 50px;
+}
+
+.choiceimages img {
+  border-radius: 10px;
+  width: 30%;
+}
+
+.choiceimages img:hover {
+  border: 2px solid white;
+  cursor: pointer;
+}
+
+.choiceimages h2:hover {
   color: red;
 }

@@ -1,4 +1,5 @@
 import fit1 from "../components/images/fit1.jpeg";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -11,7 +12,9 @@ export default function Home() {
         <p>Attend classes that are run by local instructors, anywhere!</p>
       </div>
       <div className="btncontainer">
-        <button className="mainbtn">Join Now</button>
+        <Link to="/choice">
+          <button className="mainbtn">Join Now</button>
+        </Link>
       </div>
 
       <div className="bottom">
