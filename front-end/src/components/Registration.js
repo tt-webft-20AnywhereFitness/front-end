@@ -113,5 +113,4 @@ const InstructorRegister = (props) => {
     )
 }
 
-export default InstructorRegister
-
+export default InstructorRegister;
