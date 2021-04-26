@@ -100,3 +100,51 @@ img {
   border: 2px solid white;
   cursor: pointer;
 }
+
+/* Registration Styles */
+.register {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 256px;
+  min-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+}
+.registerHeader {
+  color: red;
+}
+.registerFrom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.registerFrom label {
+  margin: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.registerFrom button {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.registerFrom button:hover {
+  background-color: white;
+  color: red;
+}
