@@ -9,7 +9,7 @@ export default function Choice() {
       <h2>Choose if you want to join as a Client or an Instructor</h2>
 
       <span>Client</span>
-      <Link to="/register" className="choiceimages">
+      <Link to="/clientregister" className="choiceimages">
         <img src={client} alt="" />
       </Link>
       <span>Instructor</span>
