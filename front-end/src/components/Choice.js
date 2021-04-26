@@ -1,16 +1,21 @@
 import client from "../components/images/client.jpeg";
 import trainer from "../components/images/trainer.jpeg";
+import { Link } from "react-router-dom";
+import React from "react";
 
 export default function Choice() {
   return (
     <div className="choicemain">
       <h2>Choose if you want to join as a Client or an Instructor</h2>
-      <div className="choiceimages">
-        <h2>Client</h2><br/>
+
+      <span>Client</span>
+      <Link to="/register" className="choiceimages">
         <img src={client} alt="" />
-        <h2>Instructor</h2>
+      </Link>
+      <span>Instructor</span>
+      <Link to="/register" className="choiceimages">
         <img src={trainer} alt="" />
-      </div>
+      </Link>
     </div>
   );
 }

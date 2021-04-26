@@ -10,6 +10,7 @@ function App() {
       <Route path='/register'>
         <InstructorRegister />
       </Route>
+      <Route exact path="/choice" component={Choice} />
     </div>
   );
 }

@@ -73,6 +73,12 @@ img {
   color: white;
   text-align: center;
 }
+.choicemain span {
+  color: red;
+  font-size: 30px;
+  font-family: "Open Sans";
+  font-weight: bold;
+}
 
 .choiceimages {
   display: flex;
@@ -93,8 +99,4 @@ img {
 .choiceimages img:hover {
   border: 2px solid white;
   cursor: pointer;
-}
-
-.choiceimages h2:hover {
-  color: red;
 }

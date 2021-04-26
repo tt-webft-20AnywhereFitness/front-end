@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 const InstructorRegister = (props) => {
     const [credentials, setCredentials] = useState({
         username:"",
@@ -20,7 +21,9 @@ const InstructorRegister = (props) => {
     return (
         <div className="register">
             <div className="textContainer">
+
                 <h2 className="registerHeader">Instructors Register Today</h2>
+
                 <form className="registerFrom" onSubmit={submitHandler}>
                     <label>
                         Username:
@@ -78,4 +81,6 @@ const InstructorRegister = (props) => {
         </div>
     )
 }
+
 export default InstructorRegister
+
