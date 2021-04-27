@@ -1,42 +1,31 @@
 import React, { useState } from 'react'
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 const initialValues = {
     username:"",
     password:"",
     email:"",
     bio:"",
+    accountType: "Client"
 };
 
 const ClientRegister = (props) => {
     const [credentials, setCredentials] = useState(initialValues);
-    const [users, setUsers] = useState([]);
-    const { push } = useHistory();
-
-    const submit = () => {
-        const newUser = {
-            username: credentials.username.trim(),
-            password: credentials.password.trim(),
-            email: credentials.email,
-            bio: credentials.bio,
-            accountType: "Client",
-        };
-        console.log(newUser);
-        axiosWithAuth()
-            .post("/auth/register", newUser)
-            .then(res => {
-                setUsers([res.data, ...users])
-                push("/login")
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
+    // const { push } = useHistory();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        submit();
+        axiosWithAuth()
+            .post("/auth/register", credentials)
+            .then(res => {
+                console.log("REGISTER SUCCESS", res)
+                // localStorage(setItem("token", res.data.token))
+                // push("/login")
+            })
+            .catch(err => {
+                console.log("REGISTER FAILURE", err);
+            });
         setCredentials(initialValues);
     };
 
