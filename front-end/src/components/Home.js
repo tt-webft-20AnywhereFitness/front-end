@@ -19,7 +19,7 @@ export default function Home() {
 
       <div className="bottom">
         <h3>
-          Already have an account? <a href="">Log In</a>
+          Already have an account? <a href="/login">Log In</a>
         </h3>
       </div>
     </div>
