@@ -57,7 +57,7 @@ const ClientRegister = (props) => {
               name="username"
               value={credentials.username}
               onChange={handleChange}
-              ref={...register({ required: true, minLength: 2 })}
+              ref={register({ required: true, minLength: 2 })}
             />
           </label>
           {errors.username &&
