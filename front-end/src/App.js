@@ -5,19 +5,22 @@ import Choice from "./components/Choice";
 import "./App.css";
 import InstructorRegister from "./components/Registration";
 import ClientRegister from "./components/ClientRegister";
+import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import ClientPage from "./components/ClientPage";
+import InstructorPage from "./components/InstructorPage";
 
 function App() {
   return (
     <div className="App">
       <Nav />
       <Route exact path="/" component={Home} />
-      <Route path="/register">
-        <InstructorRegister />
-      </Route>
-      <Route path="/clientregister">
-        <ClientRegister />
-      </Route>
+      <Route path="/register" component={InstructorRegister}/>
+      <Route path="/clientregister" component={ClientRegister}/>
+      <Route path="/login" component={Login}/>
       <Route exact path="/choice" component={Choice} />
+      <PrivateRoute exact path ="/client-page" component={ClientPage}/>
+      <PrivateRoute exact path ="/instructor-page" component={InstructorPage}/>
     </div>
   );
 }
