@@ -1,54 +1,23 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom";
 
-const initialValues = {
-    username:"",
-    password:"",
-    email:"",
-    bio:"",
-    certifications:"",
-};
 
 const InstructorRegister = (props) => {
-    const [credentials, setCredentials] = useState(initialValues);
-
-    const [users, setUsers] = useState([]);
-    const { push } = useHistory();
-
-    const submit = () => {
-        const newUser = {
-            username: credentials.username.trim(),
-            password: credentials.password.trim(),
-            email: credentials.email,
-            bio: credentials.bio,
-            certifications: credentials.certifications,
-            accountType: "Instructor",
-        };
-        console.log(newUser);
-        axiosWithAuth()
-            .post("/auth/register", newUser)
-            .then(res => {
-                setUsers([res.data, ...users])
-                push("/login")
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    };
-
+    const [credentials, setCredentials] = useState({
+        username:"",
+        password:"",
+        email:"",
+        bio:"",
+        certifications:"",
+    });
     const submitHandler = (e) => {
         e.preventDefault();
-        submit();
-        setCredentials(initialValues);
+        console.log('submitted');
     };
-
     const handleChange = (e) => 
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value,
         });
-
     return (
         <div className="register">
             <div className="textContainer">
@@ -68,8 +37,8 @@ const InstructorRegister = (props) => {
                     <label>
                         Password:
                         <input
-                        type='password'
-                        name='password'
+                        type='text'
+                        name='passwr'
                         value={credentials.password}
                         onChange={handleChange}
                         />
@@ -77,7 +46,7 @@ const InstructorRegister = (props) => {
                     <label>
                         Email:
                         <input
-                        type='email'
+                        type='text'
                         name='email'
                         value={credentials.email}
                         onChange={handleChange}
@@ -113,4 +82,5 @@ const InstructorRegister = (props) => {
     )
 }
 
-export default InstructorRegister;
+export default InstructorRegister
+
