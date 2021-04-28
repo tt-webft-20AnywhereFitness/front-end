@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 const initialValues = {
-    name:"",
+    class_name:"",
     type:"",
     startTime:"",
     duration:"",
-    intensityLevel:"",
+    intensity:"",
     location:"",
-    maxSize:"",
+    size:"",
 }
 
 const CreateClass = (props) => {
@@ -19,24 +19,24 @@ const CreateClass = (props) => {
 
     const submit = () => {
         const newClass = {
-            name:addClass.name,
+            class_name:addClass.class_name,
             type:addClass.type,
             startTime:addClass.startTime,
             duration:addClass.duration,
-            intensityLevel:addClass.intensityLevel,
+            intensity:addClass.intensity,
             location:addClass.location,
-            maxSize:addClass.maxSize,
+            size:addClass.size,
         };
         console.log(newClass);
-        // axiosWithAuth()
-        // .post("", createClass)
-        // .then(res=> {
-        //     setCreateClass([res.data, ...createClass])
-        //     push("/myclasses")
-        // })
-        // .catch(err => {
-        //     console.log(err);
-        // });
+        axios
+        .post("https://anywhere-fitness-app-tt-20.herokuapp.com/api/classes", createClass)
+        .then(res=> {
+            setCreateClass([res.data, ...createClass])
+            push("/myclasses")
+        })
+        .catch(err => {
+            console.log(err);
+        });
     }
 
     const submitHandler = (e) => {
@@ -60,8 +60,8 @@ const CreateClass = (props) => {
                         Class Name:
                         <input
                         type='text'
-                        name='name'
-                        value={addClass.name}
+                        name='class_name'
+                        value={addClass.class_name}
                         onChange={handleChange}
                         />
                     </label>
@@ -96,8 +96,8 @@ const CreateClass = (props) => {
                         Intensity Level (between 1-3):
                         <input
                         type="number"
-                        name='intensityLevel'
-                        value={addClass.intensityLevel}
+                        name='intensity'
+                        value={addClass.intensity}
                         onChange={handleChange}
                         />
                     </label>
@@ -114,8 +114,8 @@ const CreateClass = (props) => {
                         Max Class Size:
                         <input
                         type= 'number'
-                        name= 'maxSize'
-                        value={addClass.maxSize}
+                        name= 'size'
+                        value={addClass.size}
                         onChange={handleChange}
                         />
                     </label>

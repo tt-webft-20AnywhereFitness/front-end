@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import ClientPage from "./components/ClientPage";
 import InstructorPage from "./components/InstructorPage";
+import CreateClass from "./components/CreateClass";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/choice" component={Choice} />
       <PrivateRoute exact path ="/client-page" component={ClientPage}/>
       <PrivateRoute exact path ="/instructor-page" component={InstructorPage}/>
+      <PrivateRoute exact path ="/addclass" component={CreateClass}/>
     </div>
   );
 }
