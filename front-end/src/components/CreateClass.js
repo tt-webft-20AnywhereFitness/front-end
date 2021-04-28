@@ -28,15 +28,15 @@ const CreateClass = (props) => {
             maxSize:addClass.maxSize,
         };
         console.log(newClass);
-        axiosWithAuth()
-        .post("", createClass)
-        .then(res=> {
-            setCreateClass([res.data, ...createClass])
-            push("/myclasses")
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        // axiosWithAuth()
+        // .post("", createClass)
+        // .then(res=> {
+        //     setCreateClass([res.data, ...createClass])
+        //     push("/myclasses")
+        // })
+        // .catch(err => {
+        //     console.log(err);
+        // });
     }
 
     const submitHandler = (e) => {
