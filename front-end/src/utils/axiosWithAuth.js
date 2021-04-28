@@ -7,6 +7,6 @@ export const axiosWithAuth = () => {
             Authorization: localStorage.getItem("token")
         },
 
-        baseURL: "https://anywhere-fitness-tt-20.herokuapp.com/api",
+        baseURL: "https://anywhere-fitness-app-tt-20.herokuapp.com/api",
     });
 };
