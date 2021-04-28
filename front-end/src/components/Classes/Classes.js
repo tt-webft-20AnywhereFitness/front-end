@@ -6,10 +6,9 @@ const Classes = ({classes}) => {
     return (
         <div>
             {classes.map(item => (
-                <div key={classes.class_id}>
-                <Class classes={classes} key={classes.class_id}/>      
-                </div>
-            ))}
+                <Class classNew={item} key={item.class_id}/>      
+            )
+            )}
         </div>
     )
 }
