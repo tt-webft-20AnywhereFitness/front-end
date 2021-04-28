@@ -1,3 +1,7 @@
+// username: BobbieSue
+// email: BOB@gmail.com
+// password: RS84JFAFQ3JF9Q3NL
+
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import { axiosWithAuth } from "../utils/axiosWithAuth";
@@ -25,11 +29,11 @@ const Login = (props) => {
             .then(res => {
                 console.log(res);
                 localStorage.setItem("token", res.data.token);
-                localStorage.setItem("accountType", res.data.accountType);
+                localStorage.setItem("user_id", res.data.user_id);
 
-                if((localStorage.getItem("token")) && (localStorage.getItem("accountType") === "Instructor")) {
+                if((localStorage.getItem("token")) && (localStorage.getItem("user_id") === 6)) {
                     push("/instructor-page")
-                } else if((localStorage.getItem("token")) && (localStorage.getItem("accountType") === "Client")) {
+                } else if((localStorage.getItem("token")) && (localStorage.getItem("role_id") === 1)) {
                     push("/client-page")
                 } else {
                     alert("Invalid Login.")

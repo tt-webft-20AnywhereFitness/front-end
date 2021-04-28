@@ -1,27 +1,28 @@
 import React, { useState } from 'react'
-import { axiosWithAuth } from "../utils/axiosWithAuth";
-// import { useHistory } from "react-router-dom";
+// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 const initialValues = {
     username:"",
     password:"",
     email:"",
-    bio:"",
-    accountType: "Client"
+    remaining_classes:"",
+    role_id: ""
 };
 
 const ClientRegister = (props) => {
     const [credentials, setCredentials] = useState(initialValues);
-    // const { push } = useHistory();
+    const { push } = useHistory();
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axiosWithAuth()
-            .post("/auth/register", credentials)
+        axios
+            .post("https://anywhere-fitness-app-tt-20.herokuapp.com/api/auth/register", credentials)
             .then(res => {
                 console.log("REGISTER SUCCESS", res)
-                // localStorage(setItem("token", res.data.token))
-                // push("/login")
+                localStorage.setItem("token", res.data.token)
+                push("/login")
             })
             .catch(err => {
                 console.log("REGISTER FAILURE", err);
@@ -68,11 +69,20 @@ const ClientRegister = (props) => {
                         />
                     </label>
                     <label>
-                        Bio:
+                        Remaining Classes:
                         <input
                         type='text'
-                        name='bio'
-                        value={credentials.bio}
+                        name='remaining_classes'
+                        value="0"
+                        onChange={handleChange}
+                        />
+                    </label>
+                    <label>
+                        Role:
+                        <input
+                        type='text'
+                        name='role_id'
+                        value="1"
                         onChange={handleChange}
                         />
                     </label>
