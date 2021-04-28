@@ -23,6 +23,8 @@ const ClientRegister = (props) => {
         credentials
       )
       .then((res) => {
+        credentials.remaining_classes = 0;
+        credentials.role_id = 1;
         console.log("REGISTER SUCCESS", res);
         localStorage.setItem("token", res.data.token);
         push("/login");
@@ -68,24 +70,6 @@ const ClientRegister = (props) => {
               type="email"
               name="email"
               value={credentials.email}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Remaining Classes:
-            <input
-              type="text"
-              name="remaining_classes"
-              value={credentials.remaining_classes}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Role:
-            <input
-              type="text"
-              name="role_id"
-              value={credentials.role_id}
               onChange={handleChange}
             />
           </label>

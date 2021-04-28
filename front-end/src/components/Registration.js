@@ -7,6 +7,8 @@ const initialValues = {
   username: "",
   password: "",
   email: "",
+  bio: "",
+  certifications: "",
   remaining_classes: 0,
   role_id: 2,
 };
@@ -23,6 +25,8 @@ const InstructorRegister = (props) => {
         credentials
       )
       .then((res) => {
+        credentials.remaining_classes = 0;
+        credentials.role_id = 2;
         console.log("REGISTER SUCCESS", res);
         localStorage.setItem("token", res.data.token);
         push("/login");
@@ -38,7 +42,6 @@ const InstructorRegister = (props) => {
       ...credentials,
       [e.target.name]: e.target.value,
     });
-
   return (
     <div className="register">
       <div className="textContainer">
@@ -72,20 +75,20 @@ const InstructorRegister = (props) => {
             />
           </label>
           <label>
-            Remaining Classes:
+            Bio (optional):
             <input
               type="text"
-              name="remaining_classes"
-              value={credentials.remaining_classes}
+              name="bio"
+              value={credentials.bio}
               onChange={handleChange}
             />
           </label>
           <label>
-            Role:
+            Certifications (optional):
             <input
               type="text"
-              name="role_id"
-              value={credentials.role_id}
+              name="certifications"
+              value={credentials.certifications}
               onChange={handleChange}
             />
           </label>
