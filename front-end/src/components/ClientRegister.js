@@ -15,9 +15,13 @@ const ClientRegister = (props) => {
   const [credentials, setCredentials] = useState(initialValues);
   // const { push } = useHistory();
 
-  const { register, handleSubmit, errors } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  //Error component and messages
+  //Error component and message
   const required = "This field is required.";
 
   const errorMessage = (error) => {
@@ -54,10 +58,9 @@ const ClientRegister = (props) => {
             Username:
             <input
               type="text"
-              name="username"
+              {...register("username", { required: true, minLength: 2 })}
               value={credentials.username}
               onChange={handleChange}
-              ref={register({ required: true, minLength: 2 })}
             />
           </label>
           {errors.username &&
@@ -67,13 +70,12 @@ const ClientRegister = (props) => {
             Password:
             <input
               type="password"
-              name="password"
-              value={credentials.password}
-              onChange={handleChange}
-              ref={register({
+              {...register("password", {
                 required: true,
                 pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/,
               })}
+              value={credentials.password}
+              onChange={handleChange}
             />
           </label>
           {errors.password &&
@@ -88,10 +90,9 @@ const ClientRegister = (props) => {
             Email:
             <input
               type="email"
-              name="email"
+              {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
               value={credentials.email}
               onChange={handleChange}
-              ref={register({ required: true, pattern: /^\S+@\S+$/i })}
             />
           </label>
           {errors.email &&
