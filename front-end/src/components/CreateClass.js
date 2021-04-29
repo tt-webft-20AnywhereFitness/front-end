@@ -46,7 +46,6 @@ const CreateClass = (props) => {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
     submit();
     setAddClass(initialValues);
     axiosWithAuth()

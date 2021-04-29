@@ -38,7 +38,6 @@ const InstructorRegister = (props) => {
   };
 
   const submitHandler = (e) => {
-    e.preventDefault();
     axios
       .post(
         "https://anywhere-fitness-app-tt-20.herokuapp.com/api/auth/register",
