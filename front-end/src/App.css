@@ -162,8 +162,13 @@ img {
   color: red;
 }
 
-/* Login Form */
+/* Error message */
+.invalid-feedback {
+  color: red;
+  font-size: 1.2rem;
+}
 
+/* Login Form */
 .login {
   border: 2px solid white;
   border-radius: 10px;
