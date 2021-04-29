@@ -56,12 +56,6 @@ const CreateClass = (props) => {
   //Error message and component
   const required = "This field is required.";
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    submit();
-    setAddClass(initialValues);
-  };
-
   const handleChange = (e) =>
     setAddClass({
       ...addClass,
