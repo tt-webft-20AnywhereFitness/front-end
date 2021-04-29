@@ -14,13 +14,7 @@ const initialValues = {
 };
 
 const InstructorRegister = (props) => {
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-    email: "",
-    bio: "",
-    certifications: "",
-  });
+  const [credentials, setCredentials] = useState(initialValues);
 
   const {
     register,
@@ -29,7 +23,7 @@ const InstructorRegister = (props) => {
   } = useForm();
 
   const { push } = useHistory();
-
+  console.log(credentials);
   //Error message and component
   const required = "This field is required.";
 
