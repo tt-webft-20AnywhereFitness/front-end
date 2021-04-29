@@ -48,6 +48,8 @@ const InstructorRegister = (props) => {
         credentials.role_id = 2;
         console.log("REGISTER SUCCESS", res);
         localStorage.setItem("token", res.data.token);
+        //Set the instructor ID hereS
+        localStorage.setItem("user_id", res.data.user_id);
         push("/login");
       })
       .catch((err) => {

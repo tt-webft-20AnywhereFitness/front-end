@@ -40,6 +40,7 @@ const ClientRegister = (props) => {
         credentials.role_id = 1;
         console.log("REGISTER SUCCESS", res);
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("user_id", res.data.user_id);
         push("/login");
       })
       .catch((err) => {
@@ -58,7 +59,11 @@ const ClientRegister = (props) => {
     <div className="register">
       <div className="textContainer">
         <h2 className="registerHeader">Clients Register Today</h2>
-        <form className="registerFrom" onSubmit={handleSubmit(submitHandler)}>
+        <form
+          className="registerFrom"
+          action="post"
+          onSubmit={handleSubmit(submitHandler)}
+        >
           <label>
             Username:
             <input

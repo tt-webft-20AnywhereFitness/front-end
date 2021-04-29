@@ -2,18 +2,6 @@ import React, { useState, useEffect } from "react";
 import Classes from "./Classes/Classes";
 import axios from "axios";
 
-/**
-class_id: 1
-class_name: "Namaste In Bed"
-duration: 45
-instructor_id: 1
-intensity: 3
-location: "24 Hour Fitness"
-registered_clients: "0"
-size: "12"
-startTime: "6"
- */
-
 const ClientPage = (props) => {
   const [gymClass, setGymClass] = useState([]);
   const [gymClassFull, setGymClassFull] = useState([]);
