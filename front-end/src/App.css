@@ -56,6 +56,18 @@ img {
   cursor: pointer;
 }
 
+.loginbtn {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-bottom: 100px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
 /* Bottom Styles*/
 .bottom {
   color: white;
@@ -65,6 +77,7 @@ img {
 
 .bottom a {
   color: red;
+  margin-bottom: 100px;
 }
 
 /* Choice Styles*/
@@ -153,4 +166,43 @@ img {
 .invalid-feedback {
   color: red;
   font-size: 1.2rem;
+}
+
+/* Login Form */
+.login {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 256px;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  position: relative;
+  text-align: center;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginForm label {
+  margin: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.loginForm button {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
 }

@@ -1,19 +1,20 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useForm } from "react-hook-form";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+// import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
 
 const initialValues = {
   username: "",
   password: "",
   email: "",
-  bio: "",
-  accountType: "Client",
+  remaining_classes: 0,
+  role_id: 1,
 };
 
 const ClientRegister = (props) => {
   const [credentials, setCredentials] = useState(initialValues);
-  // const { push } = useHistory();
+  const { push } = useHistory();
 
   const {
     register,
@@ -30,12 +31,17 @@ const ClientRegister = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    axiosWithAuth()
-      .post("/auth/register", credentials)
+    axios
+      .post(
+        "https://anywhere-fitness-app-tt-20.herokuapp.com/api/auth/register",
+        credentials
+      )
       .then((res) => {
+        credentials.remaining_classes = 0;
+        credentials.role_id = 1;
         console.log("REGISTER SUCCESS", res);
-        // localStorage(setItem("token", res.data.token))
-        // push("/login")
+        localStorage.setItem("token", res.data.token);
+        push("/login");
       })
       .catch((err) => {
         console.log("REGISTER FAILURE", err);
@@ -59,6 +65,7 @@ const ClientRegister = (props) => {
             <input
               type="text"
               {...register("username", { required: true, minLength: 2 })}
+              name="username"
               value={credentials.username}
               onChange={handleChange}
             />
@@ -74,6 +81,7 @@ const ClientRegister = (props) => {
                 required: true,
                 pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/,
               })}
+              name="password"
               value={credentials.password}
               onChange={handleChange}
             />
@@ -91,6 +99,7 @@ const ClientRegister = (props) => {
             <input
               type="email"
               {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
+              name="email"
               value={credentials.email}
               onChange={handleChange}
             />

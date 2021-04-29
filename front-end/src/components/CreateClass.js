@@ -17,6 +17,11 @@ const CreateClass = (props) => {
   const [addClass, setAddClass] = useState(initialValues);
   const [createClass, setCreateClass] = useState([]);
   const { push } = useHistory();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const submit = () => {
     const newClass = {
@@ -28,8 +33,22 @@ const CreateClass = (props) => {
       location: addClass.location,
       maxSize: addClass.maxSize,
     };
-
     console.log(newClass);
+    // axiosWithAuth()
+    // .post("", createClass)
+    // .then(res=> {
+    //     setCreateClass([res.data, ...createClass])
+    //     push("/myclasses")
+    // })
+    // .catch(err => {
+    //     console.log(err);
+    // });
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    submit();
+    setAddClass(initialValues);
     axiosWithAuth()
       .post("", createClass)
       .then((res) => {
@@ -41,23 +60,11 @@ const CreateClass = (props) => {
       });
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   //Error message and component
   const required = "This field is required.";
 
   const errorMessage = (error) => {
     return <div className="invalid-feedback">{error}</div>;
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    submit();
-    setAddClass(initialValues);
   };
 
   const handleChange = (e) =>

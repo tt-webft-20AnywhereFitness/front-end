@@ -1,5 +1,17 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useHistory } from "react-router";
+
+const initialValues = {
+  username: "",
+  password: "",
+  email: "",
+  bio: "",
+  certifications: "",
+  remaining_classes: 0,
+  role_id: 2,
+};
 
 const InstructorRegister = (props) => {
   const [credentials, setCredentials] = useState({
@@ -16,6 +28,8 @@ const InstructorRegister = (props) => {
     formState: { errors },
   } = useForm();
 
+  const { push } = useHistory();
+
   //Error message and component
   const required = "This field is required.";
 
@@ -25,13 +39,30 @@ const InstructorRegister = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("submitted");
+    axios
+      .post(
+        "https://anywhere-fitness-app-tt-20.herokuapp.com/api/auth/register",
+        credentials
+      )
+      .then((res) => {
+        credentials.remaining_classes = 0;
+        credentials.role_id = 2;
+        console.log("REGISTER SUCCESS", res);
+        localStorage.setItem("token", res.data.token);
+        push("/login");
+      })
+      .catch((err) => {
+        console.log("REGISTER FAILURE", err);
+      });
+    setCredentials(initialValues);
   };
+
   const handleChange = (e) =>
     setCredentials({
       ...credentials,
       [e.target.name]: e.target.value,
     });
+
   return (
     <div className="register">
       <div className="textContainer">
