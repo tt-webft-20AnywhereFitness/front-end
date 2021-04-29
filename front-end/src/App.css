@@ -7,18 +7,37 @@ body {
 /*Nav Styles*/
 .navheader {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   color: white;
   font-family: "Open Sans";
   font-weight: 800px;
+  width: 100%;
 }
+
+.links {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+/* HOME */
 
 .main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+}
+
+.main img {
+  width: 100%;
 }
 
 .fit {
@@ -244,4 +263,8 @@ form label {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.classCard {
+  background: white;
 }

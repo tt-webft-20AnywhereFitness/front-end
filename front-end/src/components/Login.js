@@ -30,6 +30,7 @@ const Login = (props) => {
         console.log(res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.user_id);
+        localStorage.setItem("role_id", res.data.role_id);
 
         if (localStorage.getItem("token") && res.data.role_id === 2) {
           push("/instructor-page");

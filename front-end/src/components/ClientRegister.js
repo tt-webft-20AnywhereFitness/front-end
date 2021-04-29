@@ -41,6 +41,7 @@ const ClientRegister = (props) => {
         console.log("REGISTER SUCCESS", res);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_id", res.data.user_id);
+        localStorage.setItem("role_id", res.data.role_id);
         push("/login");
       })
       .catch((err) => {
