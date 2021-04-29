@@ -112,15 +112,6 @@ const ClientRegister = (props) => {
           {errors.email &&
             errors.email.type === "required" &&
             errorMessage(required)}
-          <label>
-            Bio:
-            <input
-              type="text"
-              name="bio"
-              value={credentials.bio}
-              onChange={handleChange}
-            />
-          </label>
           <button type="submit">Register</button>
         </form>
       </div>
