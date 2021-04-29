@@ -1,9 +1,16 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+
 
 const InstructorPage = (props) => {
     
     return (
-        <h1>Instructor Page</h1>
+        <div>
+            <h1>Instructor Page</h1>
+            <Link to="/add-class" className="addClassButton">
+                <button>Add a Class</button>
+            </Link>
+        </div>
     );
 };
 
