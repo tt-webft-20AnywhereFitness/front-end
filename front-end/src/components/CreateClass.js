@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 const initialValues = {
   name: "",
@@ -16,6 +17,11 @@ const CreateClass = (props) => {
   const [addClass, setAddClass] = useState(initialValues);
   const [createClass, setCreateClass] = useState([]);
   const { push } = useHistory();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const submit = () => {
     const newClass = {
@@ -56,6 +62,10 @@ const CreateClass = (props) => {
   //Error message and component
   const required = "This field is required.";
 
+  const errorMessage = (error) => {
+    return <div className="invalid-feedback">{error}</div>;
+  };
+
   const handleChange = (e) =>
     setAddClass({
       ...addClass,
@@ -66,25 +76,33 @@ const CreateClass = (props) => {
     <div className="addClass">
       <div className="textContainer">
         <h2>Add a Class!</h2>
-        <form className="addClassFrom" onSubmit={submitHandler}>
+        <form className="addClassFrom" onSubmit={handleSubmit(submitHandler)}>
           <label>
             Class Name:
             <input
               type="text"
+              {...register("name", { required: true, minLength: 2 })}
               name="name"
               value={addClass.name}
               onChange={handleChange}
             />
           </label>
+          {errors.name &&
+            errors.name.type === "required" &&
+            errorMessage(required)}
           <label>
             Class Type:
             <input
               type="text"
+              {...register("type", { required: true, minLength: 2 })}
               name="type"
               value={addClass.type}
               onChange={handleChange}
             />
           </label>
+          {errors.type &&
+            errors.type.type === "required" &&
+            errorMessage(required)}
           <label>
             Start Time:
             <input
