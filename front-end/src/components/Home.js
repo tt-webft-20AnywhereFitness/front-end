@@ -1,5 +1,6 @@
 import fit1 from "../components/images/fit1.jpeg";
 import { Link } from "react-router-dom";
+import Login from '../components/Login'
 
 export default function Home() {
   return (
@@ -18,7 +19,10 @@ export default function Home() {
       </div>
 
       <div className="bottom">
-        <h3>Already have an account?</h3>
+        <h3>
+          Already have an account?
+
+        </h3>
         <Link to="/login">
           <button className="loginbtn">Login</button>
         </Link>
