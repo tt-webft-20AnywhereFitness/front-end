@@ -31,7 +31,7 @@ const CreateClass = (props) => {
         console.log(res);
         alert("Class Created!");
         setAddClass(initialValues);
-        push("/clientpage");
+        push("/instructorpage");
       })
       .catch((err) => {
         console.log(err);
