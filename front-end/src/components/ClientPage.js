@@ -43,7 +43,7 @@ const ClientPage = (props) => {
         />
         <button type="submit">🔎</button>
       </span>
-      <h1>Client Page</h1>
+
       <Classes classes={gymClass} id={gymClass.class_id} />
     </div>
   );
