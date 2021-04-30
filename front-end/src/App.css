@@ -326,3 +326,65 @@ form label {
   margin: 50px;
   padding: 20px;
 }
+
+.classCardButton button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+/* Add Class */
+
+.page {
+  display: flex;
+  justify-content: center;
+}
+
+.addClass {
+  border: 2px solid white;
+  border-radius: 10px;
+  width: 20%;
+
+  min-height: 45vh;
+
+  padding: 8px;
+
+  text-align: center;
+}
+
+.textContainer h2 {
+  color: red;
+}
+
+.addClassFrom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.addClassFrom label {
+  margin: 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.addClassFrom button {
+  background-color: red;
+  color: white;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.addClassFrom button:hover {
+  background-color: white;
+  color: red;
+}

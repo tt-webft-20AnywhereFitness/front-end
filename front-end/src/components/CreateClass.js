@@ -61,6 +61,7 @@ const CreateClass = (props) => {
   };
 
   return (
+    <div className = 'page'>
     <div className="addClass">
       <div className="textContainer">
         <h2>Add a Class!</h2>
@@ -139,6 +140,7 @@ const CreateClass = (props) => {
           <button type="submit">Add Class</button>
         </form>
       </div>
+    </div>
     </div>
   );
 };
