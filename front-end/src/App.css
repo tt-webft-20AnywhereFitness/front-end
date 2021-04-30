@@ -285,8 +285,15 @@ form label {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
   width: 100%;
+}
+
+.cardHolder {
+  text-align: center;
+  color: red;
+  margin-top: 50px;
 }
 
 /* Card */
