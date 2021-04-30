@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
@@ -11,6 +11,7 @@ const initialValues = {
   intensityLevel: "",
   location: "",
   maxSize: "",
+  instructor_id: localStorage.getItem("user_id"),
 };
 
 const CreateClass = (props) => {
@@ -34,30 +35,28 @@ const CreateClass = (props) => {
       maxSize: addClass.maxSize,
     };
     console.log(newClass);
-    // axiosWithAuth()
-    // .post("", createClass)
-    // .then(res=> {
-    //     setCreateClass([res.data, ...createClass])
-    //     push("/myclasses")
-    // })
-    // .catch(err => {
-    //     console.log(err);
-    // });
+    axiosWithAuth()
+    .post("", createClass)
+    .then(res=> {
+        setCreateClass([res.data, ...createClass])
+        push("/myclasses")
+    })
+    .catch(err => {
+        console.log(err);
+    });
   };
 
-  const submitHandler = (e) => {
-    submit();
-    setAddClass(initialValues);
-    axiosWithAuth()
-      .post("", createClass)
-      .then((res) => {
-        setCreateClass([res.data, ...createClass]);
-        push("/myclasses");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  // const submitHandler = (e) => {
+  //   axios
+  //     .post("https://anywhere-fitness-app-tt-20.herokuapp.com/api/classes", addClass)
+  //     .then((res) => {
+  //       setCreateClass([res.data, ...createClass]);
+  //       push("/clientpage");
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
 
   //Error message and component
   const required = "This field is required.";
@@ -76,7 +75,7 @@ const CreateClass = (props) => {
     <div className="addClass">
       <div className="textContainer">
         <h2>Add a Class!</h2>
-        <form className="addClassFrom" onSubmit={handleSubmit(submitHandler)}>
+        <form className="addClassFrom" onSubmit={handleSubmit(submit)}>
           <label>
             Class Name:
             <input
