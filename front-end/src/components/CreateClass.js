@@ -4,14 +4,14 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const initialValues = {
-  name: "",
+  class_name: "",
   type: "",
   startTime: "",
   duration: "",
-  intensityLevel: "",
+  intensity: "",
   location: "",
-  maxSize: "",
-  instructor_id: localStorage.getItem("user_id"),
+  registered_clients:"",
+  size: "",
 };
 
 const CreateClass = (props) => {
@@ -26,20 +26,22 @@ const CreateClass = (props) => {
 
   const submit = () => {
     const newClass = {
-      name: addClass.name,
+      class_name: addClass.class_name,
       type: addClass.type,
       startTime: addClass.startTime,
       duration: addClass.duration,
-      intensityLevel: addClass.intensityLevel,
+      intensity: addClass.intensity,
       location: addClass.location,
-      maxSize: addClass.maxSize,
+      registered_clients: addClass.registered_clients,
+      size: addClass.size,
+      instructor_id: localStorage.getItem("user_id"),
     };
     console.log(newClass);
-    axiosWithAuth()
-    .post("", createClass)
+    axios
+    .post("https://anywhere-fitness-app-tt-20.herokuapp.com/api/classes", createClass)
     .then(res=> {
         setCreateClass([res.data, ...createClass])
-        push("/myclasses")
+        push("/clientpage")
     })
     .catch(err => {
         console.log(err);
@@ -80,9 +82,9 @@ const CreateClass = (props) => {
             Class Name:
             <input
               type="text"
-              {...register("name", { required: true, minLength: 2 })}
-              name="name"
-              value={addClass.name}
+              {...register("class_name", { required: true, minLength: 2 })}
+              name="class_name"
+              value={addClass.class_name}
               onChange={handleChange}
             />
           </label>
@@ -124,8 +126,8 @@ const CreateClass = (props) => {
             Intensity Level (between 1-3):
             <input
               type="number"
-              name="intensityLevel"
-              value={addClass.intensityLevel}
+              name="intensity"
+              value={addClass.intensity}
               onChange={handleChange}
             />
           </label>
