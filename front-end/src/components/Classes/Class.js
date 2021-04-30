@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from "react";
 
 const Class = ({classNew}) => {
+    const [thisClass, setThisClass] = useState(null);
+    const [myClasses, setMyClasses] = useState([]);
+
+    const addToMyClasses = newClass => {
+        setMyClasses([
+            ...myClasses,
+            newClass
+        ]);
+    };
+
+    const joinClass = () => {
+        addToMyClasses(thisClass);
+    };
+
     return (
         <div>
             <div className="classCard">
@@ -11,8 +25,10 @@ const Class = ({classNew}) => {
                 <p>Start Time: {classNew.startTime}</p>
                 <p>Duration: {classNew.duration} minutes</p>
                 <p>Max Class Size: {classNew.size}</p>
+                <button onClick={joinClass}>Join Class</button>
             </div>
         </div>
-    )
+    );
 };
+
 export default Class;

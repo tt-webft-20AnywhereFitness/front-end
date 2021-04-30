@@ -1,22 +1,22 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { axiosWithAuth } from "../utils/axiosWithAuth";  
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 const initialValues = {
-  name: "",
+  class_name: "",
   type: "",
+  instructor_id: localStorage.getItem("user_id"),
   startTime: "",
   duration: "",
-  intensityLevel: "",
+  intensity: "",
   location: "",
-  maxSize: "",
-  instructor_id: localStorage.getItem("user_id"),
+  registered_clients: 0,
+  size: "",
 };
 
 const CreateClass = (props) => {
   const [addClass, setAddClass] = useState(initialValues);
-  const [createClass, setCreateClass] = useState([]);
   const { push } = useHistory();
   const {
     register,
@@ -24,39 +24,19 @@ const CreateClass = (props) => {
     formState: { errors },
   } = useForm();
 
-  const submit = () => {
-    const newClass = {
-      name: addClass.name,
-      type: addClass.type,
-      startTime: addClass.startTime,
-      duration: addClass.duration,
-      intensityLevel: addClass.intensityLevel,
-      location: addClass.location,
-      maxSize: addClass.maxSize,
-    };
-    console.log(newClass);
+  const submitHandler = (e) => {
     axiosWithAuth()
-    .post("", createClass)
-    .then(res=> {
-        setCreateClass([res.data, ...createClass])
-        push("/myclasses")
-    })
-    .catch(err => {
+      .post("/classes", addClass)
+      .then((res) => {
+        console.log(res);
+        alert("Class Created!");
+        setAddClass(initialValues);
+        push("/clientpage");
+      })
+      .catch((err) => {
         console.log(err);
-    });
+      });
   };
-
-  // const submitHandler = (e) => {
-  //   axios
-  //     .post("https://anywhere-fitness-app-tt-20.herokuapp.com/api/classes", addClass)
-  //     .then((res) => {
-  //       setCreateClass([res.data, ...createClass]);
-  //       push("/clientpage");
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
 
   //Error message and component
   const required = "This field is required.";
@@ -65,29 +45,38 @@ const CreateClass = (props) => {
     return <div className="invalid-feedback">{error}</div>;
   };
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
+    if(e.target.name === "size"){
+      let num = (Number(e.target.value));
+      setAddClass({
+        ...addClass,
+        size: parseInt(num)
+      })
+      return
+    }
     setAddClass({
       ...addClass,
       [e.target.name]: e.target.value,
     });
+  };
 
   return (
     <div className="addClass">
       <div className="textContainer">
         <h2>Add a Class!</h2>
-        <form className="addClassFrom" onSubmit={handleSubmit(submit)}>
+        <form className="addClassFrom" onSubmit={handleSubmit(submitHandler)}>
           <label>
             Class Name:
             <input
               type="text"
-              {...register("name", { required: true, minLength: 2 })}
-              name="name"
-              value={addClass.name}
+              {...register("class_name", { required: true, minLength: 2 })}
+              name="class_name"
+              value={addClass.class_name}
               onChange={handleChange}
             />
           </label>
-          {errors.name &&
-            errors.name.type === "required" &&
+          {errors.class_name &&
+            errors.class_name.type === "required" &&
             errorMessage(required)}
           <label>
             Class Type:
@@ -121,11 +110,11 @@ const CreateClass = (props) => {
             />
           </label>
           <label>
-            Intensity Level (between 1-3):
+            Intensity (between 1-3):
             <input
               type="number"
-              name="intensityLevel"
-              value={addClass.intensityLevel}
+              name="intensity"
+              value={addClass.intensity}
               onChange={handleChange}
             />
           </label>
@@ -139,11 +128,11 @@ const CreateClass = (props) => {
             />
           </label>
           <label>
-            Max Class Size:
+            Class Size:
             <input
               type="number"
-              name="maxSize"
-              value={addClass.maxSize}
+              name="size"
+              value={addClass.size}
               onChange={handleChange}
             />
           </label>
