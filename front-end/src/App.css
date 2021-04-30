@@ -296,6 +296,21 @@ form label {
   margin-top: 50px;
 }
 
+.addBtn {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.addBtn button {
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  padding: 10px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
 /* Card */
 
 .classCard {
