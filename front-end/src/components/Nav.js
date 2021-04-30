@@ -30,9 +30,14 @@ export default function Nav() {
         ) : (
           <>
             {roleId === "1" && (
-              <NavLink className="link" to="/client-page">
-                Home
-              </NavLink>
+              <>
+                <NavLink className="link" to="/client-page">
+                  Home
+                </NavLink>
+                <NavLink className="link" to="/classes">
+                  Classes
+                </NavLink>
+              </>
             )}
             {roleId === "2" && (
               <>
