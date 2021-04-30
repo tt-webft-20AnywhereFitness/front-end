@@ -35,9 +35,15 @@ body {
   align-items: center;
   width: 100%;
 }
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
 
 .main img {
-  width: 100%;
+  width: 60%;
+  text-align: center;
 }
 
 .fit {
@@ -206,7 +212,7 @@ form label {
 .login {
   border: 2px solid white;
   border-radius: 10px;
-  width: 40%;
+  width: 20%;
   min-width: 256px;
   min-height: 30vh;
   display: flex;
@@ -219,9 +225,11 @@ form label {
   text-align: center;
   margin: 0 auto;
 }
-
-.login form {
-  justify-content: space-around;
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginForm input {
@@ -233,6 +241,7 @@ form label {
   margin: 15px;
   color: white;
   font-weight: bold;
+  margin-left: 40px;
 }
 
 .loginForm button {
@@ -241,20 +250,26 @@ form label {
   border-radius: 10px;
   font-size: 20px;
   font-weight: bold;
+  width: 50%;
   padding: 10px;
+  margin-top: 20px;
   border: none;
   cursor: pointer;
+  text-align: center;
 }
 
 /* Search Bar */
 .searchSpan {
   display: flex;
+  justify-content: center;
   width: 80%;
 }
 .searchBar {
-  width: 100%;
+  width: 60%;
   height: 25px;
   padding: 5px;
+  border-radius: 10px;
+  border: 2px solid red;
 }
 
 /* CLasses Page */
@@ -264,7 +279,28 @@ form label {
   flex-direction: column;
   align-items: center;
 }
+/* Cards Page*/
+
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Card */
 
 .classCard {
-  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  background: #303030;
+  border: solid white 2px;
+  border-radius: 10px;
+  color: white;
+  margin: 50px;
+  padding: 20px;
 }
